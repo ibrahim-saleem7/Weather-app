@@ -1,0 +1,80 @@
+<div class="search">
+    <input type="text" placeholder="Search City" (change)="search()" [(ngModel)]="city">
+</div>
+
+
+<div class="containaer">
+  <div class="upper-data">
+    <img src="assets/hot.png" alt="" *ngIf="temp > 15">
+    <img src="assets/cold.jpg" alt="" *ngIf="temp <= 15">
+
+    <div class="weather-data">
+      <div class="location"> <img src="assets/pngwing.com (10).png" alt="">{{ctiyName}}</div>
+      <div class="temperature">{{ (weather?.temp-273.15).toFixed(0)}}°C</div>
+    </div>
+
+
+  </div>
+  <div class="lower-data">
+    <div class="more-info-label">
+      <p>Today's Report</p>
+      <p>{{timeCurrent | date: "EEE dd MMM"}}</p>
+    </div>
+    <div class="more-info-container">
+
+      <div class="info-block row">
+        <div class="info-block-label time">
+          <p>Weather : {{weatherDetiles?.description | titlecase}}</p><br>
+          <img [src]=weatherIcon alt="">
+          <p>Clock : {{timeCurrent | date : " h:mm a" }}</p><br>
+          <img class="clock" src="assets/clock.png" alt="">
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="assets/temp.png" alt="">
+          <span>min</span>
+        </div>
+        <div class="info-block-value">
+          {{(weather?.temp_min -273.15).toFixed(0)}}°C
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="assets/max.png" alt="">
+          <span>max</span>
+        </div>
+        <div class="info-block-value">
+          {{(weather?.temp_max -273.15).toFixed(0)}}°C
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="assets/humidity.png" alt="">
+          <span>humidity</span>
+        </div>
+        <div class="info-block-value">
+          {{weather?.humidity}}%
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-block-label">
+          <img class="wind" src="assets/pngwing.com (5).png" alt="">
+          <span>wind</span>
+        </div>
+        <div class="info-block-value ">
+          {{wind?.speed}} km/h
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
